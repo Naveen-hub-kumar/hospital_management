@@ -2,6 +2,180 @@
 
 {% block content %}
 
+<div style="
+        width:500px;
+        margin:40px auto;
+        background:white;
+        padding:30px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.1);
+">
+
+    <h1 style="
+            text-align:center;
+            margin-bottom:20px;
+    ">
+
+        Book Appointment
+
+    </h1>
+
+    <!-- ERROR MESSAGE -->
+
+    {% if error %}
+
+    <div style="
+            background:#f8d7da;
+            color:#721c24;
+            padding:10px;
+            border-radius:5px;
+            margin-bottom:15px;
+    ">
+
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
+    <!-- FORM -->
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <!-- SELECT DOCTOR -->
+
+        <label>
+
+            Select Doctor
+
+        </label>
+
+        <br><br>
+
+        <select name="doctor"
+                required
+                style="
+                    width:100%;
+                    padding:10px;
+                    margin-bottom:15px;
+                ">
+
+            {% for doctor in doctors %}
+
+            <option value="{{ doctor.id }}">
+
+                {{ doctor.name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <!-- SELECT PATIENT -->
+
+        <label>
+
+            Select Patient
+
+        </label>
+
+        <br><br>
+
+        <select name="patient"
+                required
+                style="
+                    width:100%;
+                    padding:10px;
+                    margin-bottom:15px;
+                ">
+
+            {% for patient in patients %}
+
+            <option value="{{ patient.id }}">
+
+                {{ patient.name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <!-- APPOINTMENT DATE -->
+
+        <label>
+
+            Appointment Date
+
+        </label>
+
+        <br><br>
+
+        <input type="date"
+               name="appointment_date"
+               required
+               style="
+                    width:100%;
+                    padding:10px;
+                    margin-bottom:15px;
+               ">
+
+        <!-- APPOINTMENT TIME -->
+
+        <label>
+
+            Appointment Time
+
+        </label>
+
+        <br><br>
+
+        <input type="time"
+               name="appointment_time"
+               required
+               style="
+                    width:100%;
+                    padding:10px;
+                    margin-bottom:20px;
+               ">
+
+        <!-- BUTTON -->
+
+        <button type="submit"
+                style="
+                    width:100%;
+                    padding:12px;
+                    background:#007bff;
+                    color:white;
+                    border:none;
+                    border-radius:5px;
+                    font-size:16px;
+                    cursor:pointer;
+                ">
+
+            Book Appointment
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+{% comment %} {% extends 'users/admin_dashboard.html' %}
+
+{% block content %}
+
 
 
 <body style="
@@ -142,3 +316,151 @@
 
     </div>
 {% endblock content %}
+
+
+
+{% comment %} 
+{% extends 'users/admin_dashboard.html' %}
+
+{% block content %}
+
+<div style="
+        width:500px;
+        margin:40px auto;
+        background:white;
+        padding:30px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.1);
+">
+
+    <h1 style="text-align:center;">
+
+        Book Appointment
+
+    </h1>
+
+    {% if error %}
+
+    <div style="
+            background:#f8d7da;
+            color:#721c24;
+            padding:10px;
+            border-radius:5px;
+            margin-bottom:15px;
+    ">
+
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <!-- DOCTOR -->
+
+        <label>Select Doctor</label>
+
+        <br><br>
+
+        <select name="doctor"
+                required
+                style="
+                    width:100%;
+                    padding:10px;
+                    margin-bottom:15px;
+                ">
+
+            {% for doctor in doctors %}
+
+            <option value="{{ doctor.id }}">
+
+                {{ doctor.name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <!-- PATIENT -->
+
+        <label>Select Patient</label>
+
+        <br><br>
+
+        <select name="patient"
+                required
+                style="
+                    width:100%;
+                    padding:10px;
+                    margin-bottom:15px;
+                ">
+
+            {% for patient in patients %}
+
+            <option value="{{ patient.id }}">
+
+                {{ patient.name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <!-- DATE -->
+
+        <label>Appointment Date</label>
+
+        <br><br>
+
+        <input type="date"
+               name="appointment_date"
+               required
+               style="
+                    width:100%;
+                    padding:10px;
+                    margin-bottom:15px;
+               ">
+
+        <!-- TIME -->
+
+        <label>Appointment Time</label>
+
+        <br><br>
+
+        <input type="time"
+               name="appointment_time"
+               required
+               style="
+                    width:100%;
+                    padding:10px;
+                    margin-bottom:20px;
+               ">
+
+        <!-- BUTTON -->
+
+        <button type="submit"
+                style="
+                    width:100%;
+                    padding:12px;
+                    background:#007bff;
+                    color:white;
+                    border:none;
+                    border-radius:5px;
+                    font-size:16px;
+                    cursor:pointer;
+                ">
+
+            Book Appointment
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %} {% endcomment %} 

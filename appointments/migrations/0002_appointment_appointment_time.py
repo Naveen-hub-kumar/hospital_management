@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='appointment',
             name='appointment_time',
-            field=models.TimeField(default='TEMP001'),
+           field=models.TimeField(default='10:00:00'),
             preserve_default=False,
         ),
     ]
